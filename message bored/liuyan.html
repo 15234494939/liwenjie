@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				font-family: '苹方';
+				color: #666;
+			}
+			body{
+				background: skyblue;
+			}
+			.big{
+				padding-top: 30px;
+				width: 700px;
+				border-radius: 10px;
+				min-height: 500px;
+				height: auto;
+				margin: 20px auto;
+				border: 2px solid #ccc;
+				background: white;
+			}
+			textarea{
+				width: 650px;
+				height: 100px;
+				margin-top: 10px;
+				margin-left: 25px;
+				resize: none;
+				
+			}
+			button{
+				color: white;
+				background: green;
+				width: 100px;
+				text-align: center;
+				line-height: 30px;
+				height: 30px;
+				border-radius: 5px;
+				margin-left: 25px;
+				outline: none;
+				
+			}
+			
+			
+			ul.pinglun{
+				width: 650px;
+				margin: 10px auto;
+			}
+			ul.pinglun>li{
+				box-shadow: 0 0 3px 1px #ccc;
+				height: 200px;
+				margin-top: 10px;
+			}
+			ul.pinglun>li>img{
+				position: absolute;
+				margin: 10px 10px;
+				z-index: 50;
+			}
+			ul.pinglun>li>.contant{
+				position: relative;
+				
+				margin-left: 64px;
+			}
+			h6{
+				float: left;
+				color: green;
+				margin-top: 15px;
+			}
+			span.data{
+				display: block;
+				float: left;
+				margin-left: 5px;
+				font-size: 12px;
+				margin-top: 15px;
+			}
+			span.huifu{
+				display: block;
+				float: right;
+				margin-right: 10px;
+				margin-top: 15px;
+				font-size: 14px;
+			}
+			.clear{
+				clear:both
+			}
+			p{
+				margin-top: 30px;
+			}
+			div.font{
+				float: right;
+			}
+			div.font span{
+				color: green;
+				font-weight: bold;
+				margin-top: 15px;
+			}
+		</style>
+		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="big">
+			<textarea name="" rows="" cols="" maxlength="120"></textarea>
+			<button>提交评论</button>
+			<div class="font">还可以输入<span class="font">120</span>个字</div>
+			<center>
+				<hr width='670' style="margin-top: 10px;"/>
+			</center>
+			<ul class="pinglun">
+				<li>
+					<img src="img/u=2003988139,3010807873&fm=26&gp=0.jpg" width="50" height="50"/>
+					<div class="contant">
+						<h6>手写的从前</h6>
+						<span class="data">2017-08-21</span>
+						<span class="huifu">[回复]</span>
+						<div class="clear"></div>
+						<p>
+							我是手写的从前
+						</p>
+					</div>
+				</li>
+				
+			</ul>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	let texta=document.getElementsByTagName('textarea')[0];
+	let ul=document.querySelector('.pinglun')
+	let but=document.getElementsByTagName('button')[0];
+	let num=document.querySelector('span.font')
+
+	//还可以输入多少个字
+	texta.onkeyup=function(){
+		let valNum=texta.value.length;
+		num.innerHTML=`${120-valNum}`
+	}
+	//键盘按下shift和回车后发送
+	texta.onkeydown=function(e){
+		if(e.shiftKey&&e.keyCode==13){
+			let value=this.value;
+			this.value='';
+			let lis=document.createElement('li');
+			lis.innerHTML=`
+				<img src="img/u=2003988139,3010807873&fm=26&gp=0.jpg" width="50" height="50"/>
+					<div class="contant">
+						<h6>手写的从前</h6>
+						<span class="data">2017-08-21</span>
+						<span class="huifu">[回复]</span>
+						<div class="clear"></div>
+						<p>
+							${value}
+						</p>
+					</div>
+			`
+			ul.prepend(lis)
+		}
+	}
+	but.onclick=function(){
+		let value=texta.value;
+			texta.value='';
+			let lis=document.createElement('li');
+			lis.innerHTML=`
+				<img src="img/u=2003988139,3010807873&fm=26&gp=0.jpg" width="50" height="50"/>
+					<div class="contant">
+						<h6>手写的从前</h6>
+						<span class="data">2017-08-21</span>
+						<span class="huifu">[回复]</span>
+						<div class="clear"></div>
+						<p>
+							${value}
+						</p>
+					</div>
+			`
+			ul.prepend(lis)
+	}
+</script>

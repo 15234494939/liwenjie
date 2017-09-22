@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.com{
+				width: 300px;
+				height:auto;
+				background: red;
+				color: white;
+				font-size: 25px;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="com"></div>
+		<textarea name="" id="text" cols="30" rows="10" maxlength="100"></textarea>
+		
+	</body>
+</html>
+<script>
+	let text=document.getElementById('text');
+	let com=document.getElementsByClassName('com');
+	document.onkeydown=function(e){
+		if(e.shiftKey&&e.keyCode==13){
+			let p=document.createElement('p');
+			let computer=document.createElement('p')
+			com[0].appendChild(p,text);
+			com[0].appendChild(computer,text)
+			let value=text.value;
+			text.value='';
+			p.innerHTML=value;
+			computer.innerHTML='Hello';
+			computer.style.textAlign='right'
+			computer.style.color='purple'
+		}
+	}
+	
+</script>

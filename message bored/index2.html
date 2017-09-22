@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 200px;
+			background:red;
+		}
+	</style>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>
+<script>
+	let box=document.querySelector('div');
+//	document.addEventListener('mousewheel',function(e){
+//		console.log(1)
+//		console.log(e.wheelDelta)                    判断滑轮滚动方向
+//		box.style.background='#ccc';
+//	},false)
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!第二种方法
+	document.addEventListener('wheel',function(e){
+		console.log(e.wheelDelta);
+	},false)
+</script>

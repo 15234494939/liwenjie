@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 200px;
+				height: 200px;
+				position: absolute;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+</html>
+<script>
+	class drag{
+		constructor(obj){
+			this.obj=obj;
+		}
+		start(){
+			this.move();
+		}
+		move(){
+			let tha=this;
+			let that = this.obj;
+			this.obj.onmousedown=function(e){
+				let ox=e.offsetX,oy=e.offsetY;
+				document.onmousemove=function(e){
+					let cx=e.clientX,cy=e.clientY;
+					that.style.left=`${cx-ox}px`
+					that.style.top=`${cy-oy}px`
+					that.style.background=tha.color();
+				}
+				document.onmouseup=function(e){
+					document.onmousemove=null;
+				}
+			}
+		}
+		color(){
+			let colorArr=['d','6','c','a','b','1','3'];
+			let str='#';
+			for(let i=0;i<3;i++){
+				let index=Math.floor(Math.random()*colorArr.length);
+				str+=colorArr[index];
+			}
+			return str;
+		}
+	}
+	let div=document.querySelectorAll('div');
+	let dd=[];
+	for(let i=0;i<div.length;i++){
+		dd.push(new drag(div[i]))
+		dd[i].start();		
+	}
+
+</script>

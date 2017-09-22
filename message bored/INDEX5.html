@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		body{
+			height: 2000px;
+		}
+			div{
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>
+<script>
+	let div=document.getElementsByTagName('div')[0];
+	
+	div.onmousewheel=function(e){
+		e.preventDefault();
+		let widths=document.getComputedStyle(div,null).w
+		if(e.wheelDelta=-120){
+			
+			div.style.width=`${widths-10}px`
+		}
+		if(e.wheelDelta==120){
+			div.style.width=`${widths+10}px`
+		}
+	}
+</script>

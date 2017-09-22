@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body,html{
+				width: 100%;
+				height: 100%;
+				background: url(img/aaaw.jpg) no-repeat center/cover;
+				
+			}
+			body{
+				position: relative;
+			}
+			.char{
+				position: absolute;
+				width: 50px;
+				height: 50px;
+				color: #fff;
+				font-weight: bold;
+				font-family: '苹方';
+				line-height: 50px;
+				font-size: 30px;
+				text-align: center;
+				top: 0;
+				left: 0;
+				background: no-repeat center/cover;
+				font-size: 0;
+				transition: 0.8s;
+			}
+			div.scroe{
+				text-align: center;
+				line-height: 100px;
+				width: 200px;
+				height: 100px;
+				background: url(img/oo.jpg) no-repeat;
+				color: white;
+				font-size: 30px;
+				background-size: 100% 100%;
+			}
+			div.life{
+				font-size: 30px;
+				text-align: center;
+				line-height: 100px;
+				width: 200px;
+				height: 100px;
+				background: url(img/oo.jpg) no-repeat;
+				background-size:100% 100%;
+				color: white;
+			}
+			.o{
+				background: red;
+				position: absolute;
+				left: 47%;
+				top: 73%;
+			}
+		</style>
+		<script src="js/game.js"></script>
+	</head>
+	<body>
+		<div class="scroe">得分:<span class="score">0</span></div>
+		<div class="life">生命：<span class="life">10</span></div>
+		<div class="o"></div>
+	</body>
+</html>
+
+<script type="text/javascript">
+function Game(){
+	this.charSheet=[
+	['Q','img/q.png'],
+	['W','img/w.png'],
+	['E','img/e.png'],
+	['R','img/r.png'],
+	['T','img/t.png'],
+	['Y','img/y.png'],
+	['U','img/u.png'],
+	['I','img/i.png'],
+	['O','img/o.png'],
+	['P','img/p.png'],
+	['A','img/a.png'],
+	['S','img/s.png'],
+	['D','img/d.png'],
+	['F','img/f.png'],
+	['G','img/g.png'],
+	['H','img/h.png'],
+	['J','img/j.png'],
+	['K','img/k.png'],
+	['L','img/l.png'],
+	['Z','img/z.png'],
+	['X','img/x.png'],
+	['C','img/c.png'],
+	['V','img/v.png'],
+	['B','img/b.png'],
+	['N','img/n.png'],
+	['M','img/m.png']]
+	this.length=5;
+	this.speed=10;
+	this.elements=[];
+	this.score=document.querySelector('span.score')
+	this.life=document.querySelector('span.life');
+	this.position=[]
+	this.gp=10;
+	this.o=document.querySelector('.o')
+}
+Game.prototype={
+	start:function(){
+		this.getChars(this.length);
+		this.drop(this.speed);
+		this.key();
+	},
+	getChars:function(length){
+		
+		for(let i=0;i<length;i++){
+			this.getChar();
+		}
+	},
+	getChar:function(){
+		let that=this;
+		let index;
+		let divs=document.createElement('div');
+		that.o.appendChild(divs);
+		
+		let lefts=(Math.random()*(innerWidth-400))+200-that.o.offsetLeft;
+		let tops=(Math.random()*100)-that.o.offsetTop;
+		divs.classList.add('char');
+		console.log(tops)
+		do{
+			index=Math.floor(Math.random()*26);
+		}while(that.elements.some(function(value){return that.charSheet[index][0]==value.innerText}))
+		divs.innerText=that.charSheet[index][0];
+		do{
+			lefts=(Math.random()*(innerWidth-400))+200-that.o.offsetLeft;
+		}while(that.position.some(function(value){return lefts>value-50&&lefts<value+50}))
+		divs.style.cssText=`
+			left:${lefts}px;top:${tops}px;
+			background-image:url(${that.charSheet[index][1]})
+			
+		`
+		
+		that.elements.push(divs);
+		console.log(tops)
+		that.position.push(lefts)
+		/*随机位置*/
+	},
+	drop:function(speed){
+		let that=this;
+		this.time=setInterval(fn,800)
+		function fn(){
+			for(let i=0;i<that.elements.length;i++){
+				let topss=that.elements[i].offsetTop;
+				if(topss>=500-that.o.offsetTop){
+					that.o.removeChild(that.elements[i])
+					that.elements.splice(i,1);
+					that.position.splice(i,1)
+					that.getChar();
+					that.life.innerText--;
+					if(that.life.innerText==0){
+						let die=confirm("你失败了重新开始吗？")
+						if(die){
+							clearInterval(that.time)
+							for(let i=0;i<that.elements.length;i++){
+								that.o.removeChild(that.elements[i]);
+							}
+							that.elements=[];
+							that.position=[];
+							that.length=5;
+							that.life.innerText=10;
+							console.log(that.life.innerText)
+							that.start();
+							
+						}else{
+							close();
+						}
+					}
+					continue;
+				}
+				that.elements[i].style.top=`${topss+speed}px`;
+			}
+		}
+	},
+	key:function(){
+		let that=this
+		document.onkeydown=function(e){
+			let char=String.fromCharCode(e.keyCode);
+			for(let i = 0;i<that.length;i++){
+				if(char == that.elements[i].innerText){
+					that.o.removeChild(that.elements[i]);
+					that.elements.splice(i,1)
+					that.position.splice(i,1)
+					that.getChar();
+					that.score.innerText++;
+					if(that.score.innerText==that.gp){
+						that.next();
+					}
+				}
+			}
+		}
+	},
+	next:function(){
+		clearInterval(this.time)
+		for(let i=0;i<this.elements.length;i++){
+			this.o.removeChild(this.elements[i]);
+		}
+		let result=confirm("成功进入下一关，还要进行下一关吗");
+		if(result){
+			this.elements=[];
+			this.position=[];
+			this.gp+=10;
+			this.length++;
+			this.start();
+		}else{
+			close();
+		}
+		
+	},
+}
+
+	let game=new Game();
+	game.start();
+</script>
