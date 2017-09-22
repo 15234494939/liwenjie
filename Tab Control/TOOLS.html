@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+        	background:#00BFFF;
+        }
+        div#nav{
+            width: 420px;
+            height: 150px;
+            margin: 100px auto;
+
+        }
+        #nav ul li{
+            list-style: none;
+            width: 77px;
+            height: 45.5px;
+            background-color: rgba(0,0,0,0.7);
+            float: left;
+            margin: 30px 6px;
+            position: relative;
+
+        }
+        #nav ul li:before, #nav ul li:after{
+            content: "";
+            position: absolute;
+            width: 77px;
+            height: 45.5px;
+            background-color: rgba(0,0,0,0.7);
+            top: 0;
+            left: 0;
+        }
+        #nav ul li:before{
+            transform: rotate(60deg);
+        }
+        #nav ul li:after{
+            transform: rotate(-60deg);
+        }
+
+        #nav ul li img{
+            position: absolute;
+            left: 0;right: 0;top: 0;bottom: 0;
+            margin: auto;
+            z-index:10;
+            transition: 0.6s;
+        }
+        #nav ul li img:hover{
+            transform: rotate(360deg) scale(1.7);
+        }
+    </style>
+</head>
+<body>
+<div id="nav">
+    <ul>
+        <li><img src="img/1.png"> </li>
+        <li><img src="img/2.png"> </li>
+        <li><img src="img/3.png"> </li>
+        <li><img src="img/4.png"> </li>
+        <li><img src="img/5.png"> </li>
+        <li class="six"><img src="img/6.png"></li>
+        <li><img src="img/7.png"></li>
+        <li><img src="img/8.png"></li>
+        <li><img src="img/9.png"></li>
+        <li><img src="img/10.png"></li>
+        <li><img src="img/11.png"></li>
+        <li><img src="img/12.png"></li>
+
+    </ul>
+</div>
+</body>
+</html>
