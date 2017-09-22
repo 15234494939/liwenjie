@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				text-decoration: none;
+			}
+			body,html{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				background:url(images/啊.jpg) no-repeat center/cover;
+			}
+			main{
+				position: relative;
+				width: 427px;
+				height: 463px;
+				border-radius: 10px;
+				margin: 100px auto;
+				border: 1px solid #000;
+				overflow: hidden;
+			}
+			main img{
+				position: absolute;
+				width: 100%;
+				height: 105%;
+				border-radius: 10px;
+			}
+			main .mask{
+				position: absolute;
+				width: 100%;
+				bottom: 0;
+				height: 184px;
+				background: rgba(0,0,0,0.9);
+			}
+			.jindu{
+				width: 100%;
+				height: 18px;
+				position: absolute;
+				background: #000;
+				border-top: 1px solid #30353b;
+				border-bottom: 1px solid #30353b;
+				box-shadow: 0 0 3px 3px #30353b;
+			}
+			.bian{
+				margin-top: 2px;
+				background: #C74539;
+				width: 0;
+				height: 14px;
+				box-shadow: 0 0 1px 1px #C74539;
+				border-bottom-right-radius: 5px;
+				border-top-right-radius: 5px;
+				
+			}
+			h1{
+				font-family: 苹方;
+				color: #fdfdfd;
+				font-size: 23px;
+				margin-top: 40px;
+				text-align: center;
+			}
+			h2{
+				font-family: 苹方;
+				
+				color: #8c8c8c;
+				font-size: 14px;
+				margin-top: 10px;
+				text-align: center;
+			}
+			.bo{
+				width: 60px;
+				height: 60px;
+				border-radius: 50%;
+				background: #2d2d2d;
+				border: 2px solid #000;
+				position: absolute;
+				left: 50%;
+				font-size: 30px;
+				
+				transform: translateX(-50%);
+				z-index: 55;
+				box-shadow: 0 0 1px 2px #000;
+				line-height: 60px;
+			}
+			.bo-qian{
+				line-height: 50px;
+				font-size: 30px;
+				text-indent: -18px;
+				position: absolute;
+				left: 146px;
+				bottom: 23px;
+				width: 61px;
+				height: 50px;
+				background: #2d2d2d;
+				border: 2px solid #000;
+				border-radius: 24px;
+			}
+			.bo-hou{
+				text-indent: 20px;
+				line-height:50px;
+				position: absolute;
+				left: 216px;
+				bottom: 23px;
+				width: 61px;
+				height: 50px;
+				background: #2d2d2d;
+				border: 2px solid #000;
+				border-radius: 24px;
+			}
+			ul{
+				font-family: '苹方';
+				padding-top: 50px;
+				position: absolute;
+				width: 150px;
+				top: 0;
+				left: 50%;
+				transform: translateX(-50%);
+				color: skyblue;
+			}
+			ul>li{
+				text-align: center;
+			}
+			div.t{
+				font-family: '苹方';
+				position: absolute;
+				right: 10px;
+				top: 30px;
+				color: #fff;
+			}
+			div.vim{
+				position: absolute;
+				right: 30px;
+				bottom: 10px;
+				width: 8px;
+				height: 100px;
+				background: green;
+				border-radius: 5px;
+			}
+			div.v{
+				width: 8px;
+				background: red;
+				border-radius: 5px;
+				position: absolute;
+				bottom: 0;
+			}
+			div.cir{
+				width: 15px;
+				height: 15px;
+				background: red;
+				border-radius: 50%;
+				position: absolute;
+				left: 50%;
+				bottom: 0;
+				transform: translateX(-50%);
+			}
+		</style>
+		<script src="js/database.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css"/>
+	</head>
+	<body>
+		<main>
+			<img/>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<div class="mask">
+				<div class="jindu">
+					<div class="bian"></div>
+				</div>
+				<div class="t"></div>
+				<h1></h1>
+				<h2></h2>
+				<div class="bo icon-player-play iconfont"></div>
+				<div class="bo-qian icon-shangyishou iconfont"></div>
+				<div class="bo-hou icon-xiayishou iconfont"></div>
+				<div class="vim">
+					<div class="v"></div>
+					<div class="cir"></div>
+				</div>
+			</div>
+		</main>
+		<audio src=""></audio>
+	</body>
+</html>
+<script type="text/javascript">
+	let name= document.querySelector('h2');
+	let song=document.querySelector('h1')
+	let lis=document.querySelector('li');
+	let ul=document.querySelector('ul');
+	let bo=document.querySelector('.bo');
+	let img=document.querySelector('img');
+	let audioo=document.querySelector('audio');
+	let t=document.querySelector('.t');
+	let bian=document.querySelector('.bian');
+	let v=document.querySelector('.v');
+	let vim=document.querySelector('.vim');
+	let cir=document.querySelector('.cir');
+	let next=document.querySelector('.bo-hou')
+	let pre=document.querySelector('.bo-qian')
+	let i=0;
+	rendy(database[i]);
+	function rendy(database){
+		name.innerText=database.name;
+		song.innerHTML=database.songs;
+		for(let i=0;i<database.lyrics.length;i++){
+			ul.innerHTML+=`
+			<li>${database.lyrics[i].lyric}</li>
+		`
+		}
+		img.src=database.photo;
+		audioo.src=database.src;
+		
+	}
+	audioo.ontimeupdate=function(){
+		let ct=this.currentTime;
+		let at=this.duration;
+		let bili=ct/at;
+		ct=formart(ct);
+		at=formart(at);
+		t.innerHTML=`
+			${ct}-${at}
+		`
+		bian.style.width=`${bili*100}%`;
+		database[i].lyrics.forEach((value,index)=>{
+			console.log(ct);
+			console.log(value.time)
+			if(ct==value.time){
+				if(index<=4){
+					index=0;
+				}else{
+					index-=3;
+				}
+				ul.innerHTML=``;
+				for(let j=index;j<database[i].lyrics.length;j++){
+					ul.innerHTML+=`
+					<li>${database[i].lyrics[j].lyric}</li>
+				`
+				}
+			}
+		})
+	}
+	function formart(tt){
+		let tim=tt;
+		let m=Math.floor(tim/60),s=Math.floor(tim%60);
+		if(m>=10){
+			m=Math.floor(m)
+		}else{
+			m=`0${m}`;
+		}
+		if(s>=10){
+			s=Math.floor(s)
+		}else{
+			s=`0${s}`
+		}
+		tim= `${m}:${s}`;
+		return tim
+		
+	}
+	bo.onclick=function(){
+		if(audioo.paused){
+			audioo.play();
+		}else{
+			audioo.pause();
+		}
+		this.classList.toggle('icon-zanting');
+		this.classList.toggle('icon-player-play');
+		
+	}
+	cir.onmousedown=function(e){
+		let top=100-cir.offsetTop;cy=e.clientY;
+		vim.onmousemove=function(e){
+			let ccy=e.clientY;
+			let bot=cy-ccy+top-cir.offsetHeight;
+			if(bot>=vim.offsetHeight){
+				bot=vim.offsetHeight-cir.offsetHeight;
+			}
+			if(bot<=0){
+				bot=0
+			}
+			cir.style.bottom=`${bot}px`;
+			v.style.height=`${bot+cir.offsetHeight}px`;
+			console.dir(audioo);
+			audioo.volume=(bot+cir.offsetHeight)/vim.offsetHeight
+		} 
+		vim.onmouseup=function(){
+			vim.onmousemove=null;
+			vim.onmouseup=null;
+		}
+	}
+	next.onclick=function(){
+		i++;
+		if(i==6){
+			i=0;
+		}
+		ul.innerHTML=``;
+		rendy(database[i]);
+		bo.classList.remove('icon-zanting');
+		
+		bo.classList.add('icon-player-play');
+		
+
+		
+	}
+	pre.onclick=function(){
+		i--;
+		if(i==-1){
+			i=5
+		}
+		ul.innerHTML=``;
+		rendy(database[i])
+		console.log(i)
+		
+	}
+</script>
