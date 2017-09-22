@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            color: #666;
+        }
+        #NAV .head{
+            width: 1278px;
+            height: 38px;
+            background: #fbfbfb;
+            border: 1px solid #cccccc;
+            margin: auto;
+            position: relative;
+        }
+        #NAV .head p{
+            text-align: center;
+            width: 113px;
+            height: 25px;
+            font-size: 15px;
+            font-family: 宋体;
+            color: #666;
+            border:1px solid #cccccc;
+            line-height: 24px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            margin-left: 135px;
+            font-size: 14px;
+        }
+        #NAV .head a:hover p{
+            color: red;
+        }
+        #NAV .head ul.right{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            margin-left: 960px;
+            width: 210px;
+            height: 16px;
+
+        }
+        #NAV .head ul.right li{
+            padding-left: 7px;
+            float: left;
+            list-style-type: none;
+            margin-right: 7px;
+            font-size: 14px;
+
+        }
+        #NAV .head ul.right li.second{
+            padding-left: 7px;
+            padding-right: 7px;
+            border-right:1px dashed #cccccc ;
+            border-left:1px dashed #cccccc ;
+        }
+        #NAV .head ul.right li a{
+            text-decoration: none;
+            color: #666;
+        }
+        #NAV .head ul.right li a:hover{
+            color: red;
+            text-decoration: underline;
+        }
+        #NAV .top{
+            width: 1000px;
+            height: 70px;
+            margin: auto;
+            position: relative;
+            color: #666;
+        }
+        #NAV .top img{
+          position: absolute;
+            top:0;
+            bottom: 0;
+            margin: auto;
+        }
+        #NAV .top div.address{
+            width: 45px;
+            height: 40px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            margin-left: 260px;
+            font-family:Arial;
+            text-align: center;
+            line-height: 120%;
+        }
+        #NAV .top div.address p.add{
+            font-weight: bold;
+        }
+        #NAV .top div.address p.qiehuan{
+            font-size: 13px;
+        }
+        #NAV .top div.address p.qiehuan a{
+            color: #666;
+            text-decoration: none;
+        }
+        #NAV .top div.address p.qiehuan a:hover{
+            text-decoration: underline;
+        }
+        #NAV .top div.yubao{
+            width: 170px;
+            height: 50px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            margin-left: 329px;
+            border:1px solid white;
+        }
+        #NAV .top div.yubao:hover{
+            border: 1px solid #ccc;
+        }
+        #NAV .top div.yubao p{
+            width: 114px;
+            margin-left: 59px;
+            font-size: 14px;
+            margin-top: 5px;
+        }#NAV .top div.yubao p.tianqi{
+            font-size: 13px;
+            margin-top: 7px;
+                 }
+        #NAV .top div.yubao p span{
+            background: green;
+            color: white;
+        }
+        #NAV .top div.tommorow{
+            width: 135px;
+            height: 50px;
+            position: absolute;
+            top:0;
+            bottom: 0;
+            margin: auto;
+            margin-left: 501px;
+            border: 1px solid white;
+            font-size: 13px;
+        }
+        #NAV .top div.tommorow:hover{
+            border: 1px solid #ccc;
+        }
+        #NAV .top div.tommorow p{
+            margin-top: 6px;
+            margin-left: 59px;
+
+        }
+        #NAV .top div.more{
+            height: 70px;
+            line-height: 70px;
+            margin-left: 640px;
+        }
+        #NAV .top div a.more{
+            text-decoration: none;
+            color: #666666;
+
+        }
+        #NAV .top div.day{
+            width: 123px;
+            height: 35px;
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            text-align:center;
+            padding-top: 7px;
+            position:absolute;
+            top:0;
+            bottom: 0;
+            margin:auto;
+            margin-left: 667px;
+            font-size: 13px;
+        }
+        #NAV .top div.day:hover{
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+        }
+        #NAV .top div.mail{
+            width: 186px;
+            height: 66px;
+            position: absolute;
+            top:0;
+            bottom:0;
+            margin:auto;
+            margin-left: 820px;
+            padding-top: 25px;
+            font-size: 13px;
+        }
+        #NAV .top div.mail p a{
+            color: #666;
+            text-decoration: none;
+        }
+        #NAV .top div.mail p a:hover{
+            text-decoration: underline;
+        }
+        #NAV .top div.mail img{
+            margin-top: 48px;
+        }
+        #NAV .top div.mail div.login{
+            padding-left: 6px;
+            padding-bottom: 6px;
+            width: 146px;
+            border: 1px solid white;
+            margin-top: 4px;
+            margin-left: 22px;
+        }
+        #NAV .top div.mail div.login:hover{
+            border: 1px solid #ccc;
+        }
+        #NAV .top div.mail div.login:hover input.mima{
+            display: inline;
+        }
+        #NAV .top div.mail div.login:hover select{
+            display: inline;
+        }
+        #NAV .top div.mail div.login:hover input.anniu{
+            display: inline;
+        }
+        #NAV .top div.mail div.login select{
+            width: 139px;
+            margin-top: 5px;
+            display: none;
+        }
+        #NAV .top div.mail div.login input{
+            width: 135px;
+            margin-top: 5px;
+        }
+        #NAV .top div.mail div.login input.mima{
+            display: none;
+            width: 80px;
+        }
+        #NAV .top div.mail div.login input.anniu{
+            display: none;
+            background:#ccc;
+        }#NAV .top2{
+                     width: 1000px;
+            height: 94px;
+            background: #fbfbfb;
+            border: 1px solid #ccc;
+            margin: auto;
+            padding-bottom: 10px;
+                 }
+        #NAV .top2 ul{
+            margin-left: 248px;
+            margin-top: 10px;
+        }
+        #NAV .top2 ul li{
+            width: 43px;
+            height: 22px;
+            line-height: 22px;
+            text-align: center;
+            list-style-type: none;
+            float: left;
+            margin-left: 15px;
+            font-size: 14px;
+            font-family: Arial;
+            border-radius: 5px;
+        }
+        #NAV .top2 ul li:hover{
+            background: #91ce79;
+            color: white;
+        }
+        #NAV .top2 u li a{
+            text-decoration: none;
+            color: #666;
+        }
+        #NAV .top2 ul li.specitil {
+            background: #3eaf0e;
+            border-radius: 5px;
+        }
+        #NAV .top2 ul li.specitil a{
+            color: white;
+        }
+        #NAV .top2 div.soso{
+            position: relative;
+            width: 863px;
+            height: 45px;
+            clear: left;
+            margin:40px auto;
+        }
+        #NAV .top2 div.soso img{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+
+        }
+        #NAV .top2 div.soso input.soso{
+            margin-left: 200px;
+            width: 550px;
+            height: 42px;
+            font-size: 22px;
+        }
+        #NAV .top2 div.soso input.anniu{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            margin-left: 5px;
+            width: 99px;
+            height: 45px;
+            font-size: 20px;
+            color: black;
+
+        }
+        #NAV div.top3{
+            width: 999px;
+            margin:10px auto;
+            border-bottom: 1px solid #54b82a;
+            border-left: 1px solid #54b82a;
+            color: #333;
+        }
+        #NAV div.top3 .one a{
+            text-decoration: none;
+            color: #666;
+        }
+        #NAV div.top3 .one{
+            border-top: 1px solid #cccccc;
+
+
+        }
+        #NAV div.top3 .one li.no{
+            font-size: 14px;
+            padding-left: 40px;
+            padding-right: 11px;
+            border-bottom: 1px solid #54b82a;
+            height: 36px;
+            line-height: 36px;
+            list-style-type: none;
+            float: left;
+            border-right: 1px solid #ccc;
+            background: url("img/qq.png") no-repeat 5px center;
+        }
+
+        #NAV div.top3 .one li.no:hover{
+            background: #eceef1 url("img/qq.png") no-repeat 5px center;
+        }
+        #NAV div.top3 .one li.special{
+            width: 26px;
+            height: 15px;
+            background: url("img/ee.png") no-repeat center 1px;
+            padding-top:21px;
+            text-align: center;
+            font-size: 11px;
+            float: left;
+            border-right: 1px solid #ccc;
+            color: #999;
+            list-style-type: none;
+            border-bottom: 1px solid #54b82a;
+        }
+        .clear{
+            width: 0;
+            height: 0;
+            clear: left;
+        }
+        #NAV div.top3 .two{
+            width: 999px;
+            height: 27px;
+            border-right: 1px solid #54b82a;
+        }
+        #NAV div.top3 .one li.nono{
+            height: 34px;
+            border-top: 2px solid #54b82a;
+            border-right: 1px solid #54b82a;
+            border-bottom:1px solid white;
+        }
+        #NAV div.top3 .two li{
+            font-size: 14px;
+            list-style-type: none;
+            float: left;
+            margin-top: 6px;
+            margin-left: 30px;
+        }
+        #NAV div.top3 .two a:hover li{
+            text-decoration: underline;
+            color: red;
+        }
+        #NAV div.connter{
+            width: 1000px;
+            margin: auto;
+
+        }
+        #NAV div.connter div.left{
+            width: 237px;
+            margin-top: 5px;
+            float: left;
+        }
+        #NAV div.connter div.left>div{
+            border: 1px solid #ccc;
+        }
+        #NAV div.connter div.right{
+            width:746px;
+            float: left;
+            margin-top: 5px;
+            margin-left: 12px;
+        }
+        #NAV div.connter div.right>div{
+            border: 1px solid #ccc;
+        }
+        #NAV div.connter div.left1{
+            height: 240px;
+        }
+        #NAV div.connter div.left2{
+            height: 122px;
+            margin-top: 15px;
+        }
+        #NAV div.connter div.left3{
+            height: 275px;
+            margin-top: 15px;
+        }
+        #NAV div.connter div.left4{
+            height: 244px;
+        }
+        #NAV div.connter div.left5{
+            height: 244px;
+        }
+        #NAV div.connter div.left6{
+            height: 244px;
+        }
+        #NAV div.connter div.left7{
+            height: 333px;
+        }
+        #NAV div.connter div.right1{
+            height: 255px;
+        }
+        #NAV div.connter div.right2{
+            height: 220px;
+            margin-top: 15px;
+        }
+        #NAV div.connter div.right3{
+            height: 247px;
+                 }
+        #NAV div.connter div.right4{
+            height: 220px;
+        }
+        #NAV div.connter div.right5{
+            height: 222px;
+        }
+        #NAV div.connter div.right6{
+            height: 404px;
+        }
+        #NAV div.connter div.right7{
+            height: 95px;
+            margin-top: 20px;
+        }
+
+        #NAV div.connter div.right ul.list1 li{
+            float: left;
+            list-style-type: none;
+            margin:10px 0 10px 20px;
+            font-size: 13px;
+        }
+        #NAV div.connter div.right li a{
+            color: #333;
+            text-decoration: none;
+                 }
+        #NAV div.connter div.right li a:hover{
+            color: red;
+            text-decoration: underline;
+        }
+        #NAV div.connter div.right li a.jiudian{
+            color: green;
+        }
+         li a.jipiao{
+            color: orange;
+        }
+        #NAV div.connter div.left1 ul.all{
+            margin-top: 5px;
+        }
+        #NAV div.connter div.left1 ul.all li{
+            list-style-type: none;
+            float: left;
+            width: 115px;
+            height: 27px;
+            margin:5px 0 0 2px;
+            background: url("img/ww.png") no-repeat;
+            font-size: 14px;
+            line-height: 27px;
+            text-indent: 30px;
+        }
+        #NAV div.connter div.left1 ul.all li a{
+            text-decoration: none;
+            color: #333333;
+        }
+        #NAV div.connter div.left1 ul.all li a:hover{
+            color: red;
+            text-decoration: underline;
+        }
+        #NAV div.connter div.right .right1 .list2{
+            margin: 9px auto;
+            width: 729px;
+            border-bottom: 1px solid #ccc;
+
+        }
+        #NAV div.connter div.right .right1 li{
+            width: 116px;
+            height: 30px;
+            float: left;
+            text-align: center;
+            font-size: 14px;
+            color: #333;
+            list-style-type: none;
+            margin-left: 3px;
+        }
+        #NAV div.connter div.right .green{
+            color: #54b82a;
+        }
+        #NAV div.connter div.right .green:hover{
+            color: #54b82a;
+        }
+        #NAV div.connter div.right .orange{
+            color: orange;
+        }
+        #NAV div.connter div.right .orange:hover{
+            color: orange;
+        }
+        i{
+            color: orange;
+            font-weight: bold;
+        }
+        #NAV div.connter div.left2 p{
+            margin-top: 10px;
+            text-align: center;
+        }
+        #NAV div.connter div.left2 a{
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+        }
+        #NAV div.connter div.left2 a:hover{
+            color: red;
+            text-decoration: underline;
+        }
+        #NAV div.connter div.left3 p.a{
+            padding-left: 3px;
+            height: 25px;
+            line-height: 25px;
+            float: left;
+            color: green;
+            font-weight: bold;
+        }
+        #NAV div.connter div.left3 div.turn{
+            padding-right: 4px;
+            width: 70px;
+            height: 25px;
+            text-align: right;
+            background:url("img/rrr.png") no-repeat 5px center;
+            float: right;
+            line-height: 25px;
+            font-size: 14px;
+        }
+        #NAV div.connter div.left3 a:hover div{
+            color: red;
+            text-decoration: underline;
+        }
+        #NAV div.connter div.left3 ul.toutiao li{
+            width: 57px;
+            height: 24px;
+            line-height: 24px;
+            list-style-type: none;
+            float: left;
+            text-align: center;
+            border: 1px solid #cccccc;
+            background: #fafafa;
+        }
+        #NAV div.connter div.left3 ul.toutiao li:hover{
+            background: #ccc;
+        }
+        #NAV div.connter div.left3 ul.toutiao a{
+            text-decoration: none;
+        }
+        #NAV div.connter div.left3 ul.toutiao li.speciall{
+            border-left: none;
+            border-bottom: none;
+            border-top: 2px solid green;
+            font-weight: bold;
+            color: #333;
+            background: white;
+        }
+        #NAV div.connter div.left3 img{
+            margin: 10px 12px;
+            position: relative;
+            z-index: 1;
+        }
+        #NAV div.connter div.left3 p.tu{
+            position: relative;
+            top: -34px;
+            left: 11px;
+            width: 208px;
+            height: 22px;
+            color: white;
+            background:black;
+            opacity: 0.7;
+            font-size: 14px;
+            line-height: 22px;
+            z-index: 3;
+        }
+        #NAV div.connter div.left3 ul.left-xinwen{
+            margin: -30px 0 0 20px;
+            font-size: 14px;
+
+        }
+        #NAV div.connter div.left3 ul.left-xinwen li{
+            margin-top: 10px;
+        }
+        #NAV div.connter div.left3 ul.left-xinwen a{
+            color: #333;
+            text-decoration: none;
+        }
+        #NAV div.connter div.left3 ul.left-xinwen a.orange{
+            color: orange;
+        }
+        #NAV div.connter div.left3 ul.left-xinwen a:hover{
+            text-decoration: underline;
+            color: red;
+        }
+        #NAV div.connter div.right2 div.tou{
+            border-bottom: 1px solid #ccc;
+            width: 730px;
+            margin: auto;
+            padding: 6px 0;
+        }
+        #NAV div.connter div.right2 div.tou .span1{
+            font-weight: bold;
+            color: green;
+        }
+        #NAV div.connter div.right2 div.tou .a2{
+            font-size: 13px;
+            color: #666;
+            text-decoration: none;
+            float: right;
+            margin-right: 5px;
+            padding-top: 2px;
+
+        }
+        #NAV div.connter div.right2 div.tou .a2:hover{
+            text-decoration: underline;
+            color: red;
+
+        }
+        #NAV div.connter div.right2 ul.max{
+            margin: 10px auto;
+        }
+        #NAV div.connter div.right2 ul.max li{
+            list-style-type: none;
+        }
+        #NAV div.connter div.right2 ul.max a{
+            float: left;
+            width: 95px;
+            height: 30px;
+            text-decoration: none;
+            margin-left: 9px;
+            font-size: 15px;
+            line-height: 30px;
+
+        }
+        #NAV div.connter div.right2 ul.max a.no1{
+            width: 38px;
+            height: 30px;
+            color: blue;
+        }
+        #NAV div.connter div.right2 ul.max a.no8{
+            margin-left: 20px;
+            width: 50px;
+            font-size: 13px;
+            color: #999;
+        }
+        #NAV div.connter div.right2 ul.max a:hover{
+            text-decoration: underline;
+            color: red;
+        }
+        #NAV div.connter div.right2 ul.max li:hover{
+            background: lightblue;
+        }
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+<div id="NAV">
+    <div class="head">
+        <a class="red" href="#"><p class="left">设360导航为首页</p></a>
+        <ul class="right">
+            <li><a href="#">举报中心</a></li>
+            <li class="second"><a href="#">反馈意见</a></li>
+            <li><a href="#">换肤</a></li>
+        </ul>
+    </div>
+    <div class="top">
+        <a class="daohang" href="#"><img src="img/daohang.png" alt="360"></a>
+        <div class="address">
+            <p class="add">晋中</p>
+            <p class="qiehuan"><a href="#">[切换]</a></p>
+        </div>
+        <div class="yubao">
+            <img src="img/1.png" alt="预报1">
+            <p class="tianqi">今 多云0~14℃</p>
+            <p class="空气">空气质量：<span>良好</span></p>
+        </div>
+        <div class="tommorow">
+            <img src="img/2.png" alt="预报2">
+            <p class="tianqi2">明 多云</p>
+            <p class="wendu">2~16℃</p>
+        </div>
+        <div class="more">
+            <a href="#" class="more">
+              》
+            </a>
+        </div>
+        <div class="day">3月19日周日<br>二月廿二</div>
+        <div class="mail">
+            <p class="xinwen">
+                <a href="">真相：日本娱乐圈黑幕</a>
+            </p>
+            <img src="img/t01701f68c875cb1d73.png">
+            <div class="login">
+                <input type="text" size="15" value="邮箱账号">
+                <select>
+                    <option >请选择邮箱</option>
+                    <option>@126.com</option>
+                    <option>@163.com网易</option>
+                    <option>@sina.com新浪</option>
+                    <option>@sohu.com搜狐</option>
+                    <option>@163.com网易</option>
+                    <option>@163.com网易</option>
+                    <option>@163.com网易</option>
+                    <option>@163.com网易</option>
+                </select>
+                <input class="mima" type="password" value="******" style="width: 83px">
+                <input class="anniu" type="button" value="登陆" style="width: 48px;">
+            </div>
+        </div>
+    </div>
+    <div class="top2">
+        <ul class="">
+            <li class="specitil"><a href="#"> 网页</a></li>
+            <a href="#"><li> 新闻</li></a>
+            <a href="#"><li> 视频</li></a>
+            <a href="#"><li> 图片</li></a>
+            <a href="#"><li> 音乐</li></a>
+            <a href="#"><li> 微博</li></a>
+            <a href="#"><li> 地图</li></a>
+            <a href="#"><li> 问答</li></a>
+            <a href="#"><li> 购物</li></a>
+            <a href="#"><li> 机票</li></a>
+        </ul>
+        <div class="soso">
+             <img src="img/so.png" title="360导航">
+             <input class="soso" type="text">
+            <input class="anniu" type="button"value="搜一下">
+        </div>
+    </div>
+    <div class="top3">
+        <ul class="one">
+            <a href="#"><li class="no nono">推荐网站</li></a>
+            <a href="#"><li class="no">新闻头条</li></a>
+            <a href="#"><li class="no">电 视 剧</li></a>
+            <a href="#"><li class="no">最新电影</li></a>
+            <a href="#"><li class="no">小 游 戏</li></a>
+            <a href="#"><li class="no">小说大全</li></a>
+            <a href="#"><li class="no">旅游度假</li></a>
+            <a href="#"><li class="no">网上购物</li></a>
+            <a href="#"><li class="no">娱乐八卦</li></a>
+            <a href="#"><li class="special">开启</li></a>
+            <div class="clear"></div>
+        </ul>
+        <ul class="two">
+            <a href="#"><li>人民网</li></a>
+            <a href="#"><li>新华网</li></a>
+            <a href="#"><li>央视网</li></a>
+            <a href="#"><li>中华网</li></a>
+            <a href="#"><li>国际在线</li></a>
+            <a href="#"><li>中国日报网</li></a>
+            <a href="#"><li>中国经济网</li></a>
+            <a href="#"><li>光明网</li></a>
+            <a href="#"><li>央广网</li></a>
+            <a href="#"><li>中国青年网</li></a>
+            <a href="#"><li>中国军网</li></a>
+            <a href="#"><li>网信网</li></a>
+            <div class="clear"></div>
+        </ul>
+    </div>
+    <div class="connter">
+        <div class="left">
+            <div class="left1">
+                <ul class="all">
+                    <li><a href="#">新闻</a>·<a href="#">视频</a></li>
+                    <li><a href="#">电影</a>·<a href="#">电视剧</a></li>
+                    <li><a href="#">购物</a>·<a href="#">9块9</a></li>
+                    <li><a href="#">彩票</a>·<a href="#">理财</a></li>
+                    <li><a href="#">活期</a>·<a href="#">借条</a></li>
+                    <li><a href="#">娱乐</a>·<a href="#">商城</a></li>
+                    <li><a href="#" class="orange">游戏</a>·<a href="#">小游戏</a></li>
+                    <li><a href="#">动漫</a>·<a href="#">直播秀</a></li>
+                    <li><a href="#">搞笑</a>·<a href="#">解梦</a></li>
+                    <li><a href="#">教育</a>·<a href="#">度假</a></li>
+                    <li><a href="#">查询</a>·<a href="#">星座</a></li>
+                    <li><a href="#">机票</a>·<a href="#">火车票</a></li>
+                    <li><a href="#">手机</a>·<a href="#">小说</a></li>
+                    <li><a href="#">综艺</a>·<a href="#">旅游</a></li>
+                </ul>
+            </div>
+            <div class="left2">
+                <a href="#"><img src="img/wwwqq.jpg"width="235"></a>
+                <p><a href="#"> 惊！岳云鹏自爆是郭德纲的棋子</a></p>
+                <p><a href="#"> 他竟然比阿娇还会宝楼自己的缺点</a></p>
+            </div>
+            <div class="left3">
+                <p class="a">猜你爱看</p>
+                <a href="#"><div class="turn">换一下</div></a>
+                <div class="clear"></div>
+                <ul class="toutiao">
+                    <li class="speciall"><a href="#">头条</a></li>
+                    <li><a href="#">八卦</a></li>
+                    <li><a href="#">看天下</a></li>
+                    <li style="border-right: none"><a href="#">社会</a></li>
+                </ul>
+                <img src="img/啊啊我.png">
+                <p class="tu">儿子无对象 夫妻悬崖裸奔寻短见</p>
+                <ul class="left-xinwen">
+                    <li><a href="#">河南一小学发生踩踏事故致两人死</a></li>
+                    <li><a href="#">继包子雷后 这部剧退出防弹裤衩</a></li>
+                    <li><a href="#">男子欲性侵女孩 因个子太矮未遂</a></li>
+                    <li ><a href="#" class="orange">女孩为房贷跳钢管舞 特朗普通俄</a></li>
+                </ul>
+            </div>
+            <div class="left4"></div>
+            <div class="left5"></div>
+            <div class="left6"></div>
+            <div class="left7"></div>
+        </div>
+        <div class="right">
+            <div class="right1">
+                <ul class="list2">
+                    <li><a href="#">360搜索</a>·<a href="#">商城</a></li>
+                    <li><a href="#">新浪</a>·<a href="#">微博</a></li>
+                    <li><a href="#"><img src="img/ccc.png" align="top"> 天猫</a>·<a href="#">精选</a></li>
+                    <li><a href="#">搜狐</a>·<a href="#">视频</a></li>
+                    <li><a href="#">网易</a>·<a href="#">邮箱</a></li>
+                    <li><a href="#">凤凰</a>·<a href="#">军事</a></li>
+                    <li><a href="#" class="green">360游戏</a></li>
+                    <li><a href="#">淘宝网</a></li>
+                    <li><a href="#">网上购物</a></li>
+                    <li><a href="#"><img src="img/erer.png."align="top"> 苏宁易购</a></li>
+                    <li><a href="#"><img src="img/yyy.png"align="top"> 安全卫士</a></li>
+                    <li><a href="#"><img src="img/999.png"align="top"> 携程旅行</a></li>
+                    <li><a href="#">爱淘宝</a></li>
+                    <li><a href="#" class="orange">国美在线</a></li>
+                    <li><a href="#">聚划算</a></li>
+                    <li><a href="#"><img src="img/123.png"align="top"> 360影视</a></li>
+                    <li><a href="#">东财</a>·<a href="#">理财</a></li>
+                    <li><a href="#">今日热点</a></li>
+                    <li><a href="#"><img src="img/5555.png"align="top"> 京东商城</a></li>
+                    <li><a href="#">58同城</a></li>
+                    <li><a href="#">太平洋电脑</a></li>
+                    <li><a href="#">世纪佳缘</a></li>
+                    <li><a href="#">蘑菇街</a></li>
+                    <li><a href="#">中关村在线</a></li>
+                    <div class="clear"></div>
+                </ul>
+                <ul class="list22">
+                    <li><a href="#">汽车之家</a></li>
+                    <li><a href="#">易车网</a></li>
+                    <li><a href="#">太平洋汽车</a></li>
+                    <li><a href="#">安居客</a></li>
+                    <li><a href="#">折800</a></li>
+                    <li><a href="#" class="green">苏宁手机</a></li>
+                    <li><a href="#" class="green">驴妈妈旅游<i class="orange">旅游节</i></a></li>
+                    <li><a href="#">百度</a>·<a href="#">热搜</a></li>
+                    <li><a href="#">赶集网</a></li>
+                    <li><a href="#">360娱乐</a></li>
+                    <li><a href="#"><img src="img/000.png"align="top"> 途牛旅游</a></li>
+                    <li><a href="#">1号店</a></li>
+                    <li><a href="#">瓜子二手车</a></li>
+                    <li><a href="#">乐居二手房</a></li>
+                    <li><a href="#">亚马逊</a></li>
+                    <li><a href="#">游戏</a>·<a href="#">小游戏</a></li>
+                    <li><a href="#">去哪儿网</a></li>
+                    <li><a href="#">12306官网</a></li>
+                    <li><a href="#">携程机票</a></li>
+                    <li><a href="#">当当网</a></li>
+                    <li><a href="#">唯品会</a></li>
+                    <li><a href="#">聚美优品</a></li>
+                    <li><a href="#">房天下</a></li>
+                    <li><a href="#">花椒直播</a></li>
+                </ul>
+            </div>
+            <div class="right2">
+                <div class="tou">
+                    <span class="span1">发现你喜欢</span>
+                    <a href="#" class="a2">更多《</a>
+                </div>
+                <ul class="max">
+                    <li>
+                        <a href="" class="no1">推荐</a>
+                        <a href="">齐齐直播间</a>
+                        <a href="">学习网页设计</a>
+                        <a href="">网页制作教程</a>
+                        <a href="">网页设计培训</a>
+                        <a href="">腾讯直播间</a>
+                        <a href="">淘宝进货网</a>
+                        <a href="" class="no8">换一换</a>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <a href="" class="no1">热搜</a>
+                        <a href="">室内婚纱摄影</a>
+                        <a href="">QQ直播间</a>
+                        <a href="">婚纱工作室</a>
+                        <a href="">淘宝网</a>
+                        <a href="">淘宝网购</a>
+                        <a href="">真爱婚纱摄影</a>
+                        <a href="" class="no8">换一换</a>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <a href="" class="no1">游戏</a>
+                        <a href="" style="color: orange">无人民币玩家</a>
+                        <a href="">3D免费游戏</a>
+                        <a href="">爆神器特戒</a>
+                        <a href="">永久免费传奇</a>
+                        <a href="">变态MU</a>
+                        <a href="">开服送神装</a>
+                        <a href="" class="no8">换一换</a>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <a href="" class="no1">热门</a>
+                        <a href="">智联招聘</a>
+                        <a href="">太原招聘</a>
+                        <a href="">前程无忧网</a>
+                        <a href="">猎聘招聘</a>
+                        <a href="">携程网</a>
+                        <a href="">3妖股将爆发</a>
+                        <a href="" class="no8">换一换</a>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <a href="" class="no1">生活</a>
+                        <a href="">微信学投资</a>
+                        <a href="">苏宁易购官网</a>
+                        <a href="">1元抢</a>
+                        <a href="">超市天天低价</a>
+                        <a href="">网络带宽</a>
+                        <a href="">快递物流查询</a>
+                        <a href="" class="no8">换一换</a>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <a href="" class="no1">财经</a>
+                        <a href="">微信叫投资</a>
+                        <a href="">理财月入过万</a>
+                        <a href="">借款10万</a>
+                        <a href="">牛股微信</a>
+                        <a href="">明日涨停牛股</a>
+                        <a href="">扫码领牛股</a>
+                        <a href="" class="no8">换一换</a>
+                        <div class="clear"></div>
+                    </li>
+                </ul>
+            </div>
+            <ul class="list1">
+                <li><a href="#">娱乐八卦</a></li>
+                <li><a href="#">热门关注</a></li>
+                <li><a href="#" class="jiudian">特价酒店</a></li>
+                <li><a href="#">购物特卖</a></li>
+                <li><a href="#">教你理财</a></li>
+                <li><a href="#">在线教育</a></li>
+                <li><a href="#" class="jipiao">特价机票</a></li>
+                <li><a href="#">9.9元包邮</a></li>
+                <li><a href="#">特价旅游</a></li>
+                <li><a href="#">每日一题</a></li>
+                <div class="clear"></div>
+            </ul>
+            <div class="right3"></div>
+            <div class="right4"></div>
+            <div class="right5"></div>
+            <div class="right6"></div>
+            <div class="right7"></div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
