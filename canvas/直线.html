@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px solid #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="" width="" height=""></canvas>
+	</body>
+</html>
+<script type="text/javascript">
+	let canvas=document.querySelector('canvas');
+	let cst=canvas.getContext('2d');
+	let data=[];
+	canvas.onmousedown=function(e){
+		let ox=e.offsetX,oy=e.offsetY;
+		canvas.onmousemove=function(e){
+			let cx=e.offsetX,cy=e.offsetY;
+			cst.beginPath();
+			cst.clearRect(0,0,canvas.width,canvas.height);
+			if(data.length>0){
+				cst.putImageData(data[data.length-1],0,0)
+			}
+			cst.moveTo(ox,oy);
+			cst.lineTo(cx,cy);
+			cst.stroke();
+		}
+		canvas.onmouseup=function(){
+			data.push(cst.getImageData(0,0,canvas.width,canvas.height))
+			canvas.onmousemove=null;
+			canvas.onmouseup=null
+		}
+	}
+	document.onkeydown=function(e){
+		if(e.ctrlKey&&e.keyCode==90){
+			data.pop();
+			if(data.length==0){
+				cst.clearRect(0,0,canvas.width,canvas.height)
+			}else{
+				cst.putImageData(data[data.length-1],0,0)
+			}
+			
+		}
+	}
+	
+</script>

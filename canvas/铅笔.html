@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px solid #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="" width="" height=""></canvas>
+	</body>
+</html>
+<script type="text/javascript">
+	let canvas=document.querySelector('canvas');
+	let cst=canvas.getContext('2d');
+	canvas.onmousedown=function(e){
+		let ox=e.offsetX,oy=e.offsetY;
+		cst.beginPath();
+		cst.moveTo(ox,oy);
+		canvas.onmousemove=function(e){
+			let cx=e.offsetX,cy=e.offsetY;
+			cst.lineTo(cx,cy);
+			cst.stroke();
+		}
+		canvas.onmouseup=function(){
+			canvas.onmousemove=null;
+			canvas.onmouseup=null
+		}
+	}
+</script>

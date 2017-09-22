@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="iconfont/iconfont.css" />
+		<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			text-decoration: none;
+		}
+			body,html{
+				width: 100%;
+				height: 100%;
+				background: url(img/u=1373466829,3780799938&fm=26&gp=0.jpg) no-repeat;
+				background-size:100%,100%;
+				filter:;
+			}
+			div.left,div.blur{
+				width: 250px;
+				height: 500px;
+				
+				position: absolute;
+				top: 50px;
+				left: 50px;
+			}
+			.blur{
+				background: rgba(207,228,251,0.7);
+				filter: blur(15px);
+			}
+			div.right,canvas{
+				width: 725px;
+				height: 430px;
+				position: absolute;
+				top: 82px;
+				left: 382px;
+				
+			}
+			div.marke{
+				width: 725px;
+				height: 430px;
+				position: absolute;
+				top: 82px;
+				left: 382px;
+			}
+			div.right{
+				background: rgba(0,0,0,0.7);
+				/*filter: blur(15px);*/
+			}
+			ul.list{
+				float: left;
+				width: 250px;
+				height: 500px;
+			}
+			 li,a{
+			 	float: left;
+				 margin-left: 50px;
+				 margin-top: 50px;
+				 text-align: center;
+				 line-height: 50px;
+				 width: 50px;
+				 height: 50px;
+				 background: #5b8000;
+				 color: white;
+				 border-radius: 20px;
+				 box-sizing: border-box;
+				 font-size: 14px;
+			}
+			
+			button.zhi{
+				font-family: '苹方';
+				width: 100px;
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				border-radius: 20px;
+				position: absolute;
+				right: 0;
+				top: 0;
+				border: none;
+				outline: none;
+				background: #5b8000;
+				color: #fff;
+			}
+			.style{
+				font-family: '苹方';
+				width: 100px;
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				border-radius: 20px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				border: none;
+				outline: none;
+				background: #5b8000;
+				color: #fff;
+			}
+			.eraser{
+				width: 30px;
+				height: 30px;
+				border: 1px solid #795DA3;
+				filter: none;
+				position: absolute;
+				display: none;
+			}.list2{
+				position: absolute;
+				right: 20px;
+				top: 200px;
+			}
+			div.cai{
+				position: absolute;
+				border: 1px solid #0086B3;
+			}
+		</style>
+		<script type="text/javascript" src="js/class.js">
+			
+		</script>
+	</head>
+	<body>
+		<div class="blur"></div>
+		<div class="left">
+			<ul class="list">
+				<li class="iconfont icon-line zhixian" id="line"></li>
+				<li class="iconfont icon-duobianxing poloy" id="polo"></li>
+				<li class="iconfont .icon-xiaoxuxian" id="pencil">铅笔</li>
+				<li class="iconfont icon-yuan cir" id="circle"></li>
+				<li class="iconfont icon-juxing rec" id="rect"></li>
+				<li class="duojiao" id="duojiaoxing">多角形</li>
+				<li class="" id="e">橡皮</li>
+				<li class="font">文字</li>
+				<li><input type="color" /></li>
+				<li><input type="color" /></li>
+				<li class="caiqie">裁切</li>
+				<a class="save">保存</a>
+				<li class="new">新建</li>
+				<li class="che">撤销</li>
+			</ul>
+			<button class="zhi">线段</button>
+			<button class="style">描边</button>
+		</div>
+		
+		<div class="right">
+			<div class="eraser"></div>
+			<div class="cai"></div>
+		</div>
+		<canvas id="" width="725" height="430">你的浏览器版本太低</canvas>
+		<div class="marke">
+				
+		</div>
+		
+	</body>
+</html>
+<script type="text/javascript">
+	let canvas=document.querySelector('canvas');
+	let clip=document.querySelector('.caiqie');
+	let marke=document.querySelector('.marke')
+	let pal=new pall(canvas,marke);
+	let ul=document.querySelector('ul.list');
+	let but=document.querySelector('button.zhi');
+	let butt=document.querySelector('button.style');
+	let era=document.querySelector('.eraser');
+	let input=document.querySelectorAll('input');
+	let li= document.querySelectorAll('li');
+	let cai= document.querySelector('.cai');
+	let baocun=document.querySelector('.save');
+	let che=document.querySelector('.che')
+	let f=true;
+	let flag=true;
+	ul.onclick=function(e){
+		let ele=e.target;
+		if(ele.id=='pencil'){
+			pal.pencil();
+		}else if(ele.id=='e'){
+			pal.eraser(era,30,30);
+		}else if(ele.className=='font'){
+			pal.wenzi();
+		}else if(ele.className=='caiqie'){
+			pal.clip(cai);
+		}else if(ele.className=='save'){
+			baocun.href=canvas.toDataURL('imgage\png');
+			baocun.download='a.png';
+		}else if(ele.className=='che'){
+			pal.che();
+		}else{
+			pal.draw(ele.id);
+		}
+		for(let i=0;i<li.length;i++){
+			li[i].style.border='none'
+		}
+		if(ele.nodeName=='LI'){
+			ele.style.border='2px solid #ff0067';
+		}
+	}
+	but.onclick=function(){
+		if(f){
+			f=false;
+			but.innerText='虚线';
+			pal.cst.setLineDash([2,10])
+		}else{
+			but.innerText='实线';
+			f=true;
+			pal.cst.setLineDash([2,0])
+		}
+		console.log(pal.cst.getLineDash());
+	}
+	butt.onclick=function(){
+		if(flag){
+			flag=false;
+			this.innerText='填充';
+			pal.style='fill'
+		}else{
+			flag=true;
+			this.innerText='描边';
+			pal.style='stroke';
+			
+		}
+		console.log(pal.style)
+	}
+	input[0].onchange=function(){
+		pal.fillStyle=this.value;
+	}
+	input[1].onchange=function(){
+		pal.strokeStyle=this.value;
+	}
+
+</script>
